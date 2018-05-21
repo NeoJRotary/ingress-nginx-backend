@@ -12,6 +12,8 @@ then
   mv /etc/nginx/conf.d/nginx.conf /etc/nginx/nginx.conf
 fi
 
+/enable_modules.sh
+
 if [ -f "/etc/nginx/conf.d/before.sh" ]
 then
   mv /etc/nginx/conf.d/before.sh /before.sh

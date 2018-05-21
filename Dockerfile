@@ -15,4 +15,6 @@ ENV GOOGLE_APPLICATION_CREDENTIALS /service_account.json
 
 COPY --from=buildApp /build/initConfig /initConfig
 COPY start.sh /start.sh
+COPY enable_modules.sh /enable_modules.sh
+COPY module-conf /module-conf
 CMD /start.sh

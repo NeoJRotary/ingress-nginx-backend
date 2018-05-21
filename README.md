@@ -19,6 +19,7 @@ It will be execute at root folder to help you setup something before start nginx
 - SERVICE_ACCOUNT : your service account credential content in json format
 - GCS_BUCKET : bucket name
 - CONFIG_FOLDER : config files folder. It will download all files in it.
+- ENABLE_MODULE_GEOIP : if `true` it will download `Maxmind GeoLite` and setup GeoIP module for you.
 
 ## Setup Service Account
 You can set value directly at k8s configuration or pass by k8s secret.
