@@ -8,7 +8,12 @@ Kubernetes Ingress NGINX Backend with GCP
 Setup ENV, Done!   
 Everytime container start it will download latest config from your GCP bucket then start nginx.
 
-Becareful of filename `nginx.conf` in your folder. It will overwrite `/etc/nginx/nginx.conf`.
+## Special Filename
+Below filenames in your folder have differnt behavior.
+- `nginx.conf`   
+It will overwrite `/etc/nginx/nginx.conf`
+- `before.sh`   
+It will be execute at root folder to help you setup something before start nginx server. For example, curl to download geoip files for geoip nginx module.
 
 ## ENV
 - SERVICE_ACCOUNT : your service account credential content in json format
