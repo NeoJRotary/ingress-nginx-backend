@@ -8,6 +8,8 @@ Kubernetes Ingress NGINX Backend with GCP
 Setup ENV, Done!   
 Everytime container start it will download latest config from your GCP bucket then start nginx.
 
+Becareful of filename `nginx.conf` in your folder. It will overwrite `/etc/nginx/nginx.conf`.
+
 ## ENV
 - SERVICE_ACCOUNT : your service account credential content in json format
 - GCS_BUCKET : bucket name
