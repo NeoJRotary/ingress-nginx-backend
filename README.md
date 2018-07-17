@@ -1,11 +1,14 @@
 # Ingress NGINX Backend v1.1.0
 Kubernetes Ingress NGINX Backend
 
-## Intro
-- Test with kubernetes 1.9.6   
-- Check `CHANGESmd` for updates   
-- You can get it from Docker Hub   
+## Docker Hub
 `docker pull neojrotary/ingress-nginx-backend`
+
+## Intro
+- Support downloading confs from GCS
+- Support Nginx Hot Reload with Kubernetes ConfigMap volume mounting
+- Test with kubernetes 1.9.6   
+- Check `CHANGES.md` for updates      
 
 ## How To Use
 Setup ENVs, Done!    
