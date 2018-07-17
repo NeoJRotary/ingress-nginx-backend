@@ -1,10 +1,14 @@
 #!/bin/bash
 set -e
 
-echo "$SERVICE_ACCOUNT" > "/service_account.json"
+rm -rf /etc/nginx/conf.d/*
 
-# download files
-/initConfig
+if [ "$ENABLE_GCS_SYNC" = "true" ]
+then
+  /downloader
+fi
+
+cp -R $CONFIGMAP_FOLDER/. /etc/nginx/conf.d/
 
 if [ -f "/etc/nginx/conf.d/nginx.conf" ]
 then
@@ -19,5 +23,3 @@ then
   mv /etc/nginx/conf.d/before.sh /before.sh
   /before.sh
 fi
-
-nginx -g "daemon off;"

@@ -29,10 +29,10 @@ func main() {
 	}
 
 	// get bucket handle
-	bucket := client.Bucket(os.Getenv("GCS_BUCKET"))
+	bucket := client.Bucket(os.Getenv("BUCKET_NAME"))
 
 	// list and download files
-	prefix := os.Getenv("CONFIG_FOLDER")
+	prefix := os.Getenv("BUCKET_FOLDER")
 	it := bucket.Objects(ctx, &storage.Query{
 		Prefix: prefix,
 	})
