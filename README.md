@@ -18,6 +18,9 @@ It will overwrite `/etc/nginx/nginx.conf`
 - `before.sh`   
 It will be execute at root folder to help you setup something before start nginx server. For example, curl to download geoip files for geoip nginx module.
 
+### On Kubernetes
+Check `k8s-example` folder for example configuration yaml
+
 ## ENV
 ### Cloud Storage Provider
 - ENABLE_GCS_SYNC : enable GCS sync function. Default is false.

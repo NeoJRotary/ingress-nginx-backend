@@ -1,0 +1,40 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: ingress-backend
+  namespace: default
+  labels:
+    app: ingress-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ingress-backend
+  template:
+    metadata:
+      labels:
+        app: ingress-backend
+    spec:
+      volumes:
+        - name: nginx-confs
+          configMap:
+            name: nginx-confs
+      containers:
+        - name: ingress-backend
+          image: neojrotary/ingress-nginx-backend:1.1.0
+          env:
+          - name: CONFIGMAP_SCAN_DUR
+            value: "30"
+          volumeMounts:
+            - name: nginx-confs
+              mountPath: /etc/config
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 30
+            timeoutSeconds: 5
+          ports:
+            - containerPort: 80
+            - containerPort: 8080

@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-confs
+  namespace: default
+data:
+  default.conf: |
+    # livenessProbe
+    server {
+      listen 8080;
+      
+      location /healthz {
+        return 200;
+      }
+    }
+
+    # default
+    server {
+      listen 80 default_server;
+      server_name _;
+      add_header Content-Type text/plain;
+      return 200;
+    }
+  mysite.conf: |
+    upstream my-service {
+      server my-service.default:80;
+    }
+
+    server {
+      listen 80;
+      server_name mydomain.com;
+
+      location / {
+        proxy_pass http://my-service;
+      }
+    }
