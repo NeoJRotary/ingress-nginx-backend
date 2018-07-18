@@ -14,6 +14,7 @@ ENV GOPATH /build
 WORKDIR /build
 COPY ./reloader .
 RUN apk --no-cache add git
+RUN go get github.com/NeoJRotary/exec-go
 RUN go build -o reloader .
 
 # build main nginx

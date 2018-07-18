@@ -3,9 +3,10 @@ package main
 import (
 	"fmt"
 	"os"
-	"os/exec"
 	"strconv"
 	"time"
+
+	"github.com/NeoJRotary/exec-go"
 )
 
 var (
@@ -50,18 +51,20 @@ func main() {
 
 func reload() {
 	fmt.Println("Reloader exec : sh /sync_files.sh")
-	out, err := exec.Command("sh", "/sync_files.sh").Output()
+
+	out, err := exec.NewCmd("", "sh", "/sync_files.sh").Run()
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println(out + err.Error())
 	} else {
-		fmt.Println(string(out))
+		fmt.Println(out)
 	}
 
 	fmt.Println("Reloader exec : nginx -s reload")
-	out, err = exec.Command("nginx", "-s", "reload").Output()
+
+	out, err = exec.NewCmd("", "nginx", "-s", "reload").Run()
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println(out + err.Error())
 	} else {
-		fmt.Println(string(out))
+		fmt.Println(out)
 	}
 }

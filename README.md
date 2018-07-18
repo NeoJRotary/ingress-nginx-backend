@@ -1,4 +1,4 @@
-# Ingress NGINX Backend v1.1.0
+# Ingress NGINX Backend v1.1.1
 Kubernetes Ingress NGINX Backend
 
 ## Docker Hub
@@ -7,7 +7,7 @@ Kubernetes Ingress NGINX Backend
 ## Intro
 - Support downloading confs from GCS
 - Support Nginx Hot Reload with Kubernetes ConfigMap volume mounting
-- Test with kubernetes 1.9.6   
+- Test with Kubernetes 1.9.6   
 - Check `CHANGES.md` for updates      
 
 ## How To Use
@@ -17,9 +17,9 @@ It will copy all files in your Cloud Storage / ConfigMap Volume into `/etc/nginx
 ### Special Filename
 Below filenames in the folder have different behavior.
 - `nginx.conf`   
-It will overwrite `/etc/nginx/nginx.conf`
+It will move and overwrite `/etc/nginx/nginx.conf`.
 - `before.sh`   
-It will be execute at root folder to help you setup something before start nginx server. For example, curl to download geoip files for geoip nginx module.
+It will be executed at root folder to let you do anything before start nginx server.
 
 ### On Kubernetes
 Check `k8s-example` folder for example configuration yaml
