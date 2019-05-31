@@ -35,10 +35,14 @@ func main() {
 	initWalk(configmapFolder)
 	fmt.Println("Start Watching on ConfigMap Folder : ", configmapFolder)
 
+	showReloadCheckResult := os.Getenv("SHOW_RELOAD_CHECK_RESULT") == "true"
+
 	for {
 		needUpdate := walkDir(configmapFolder)
 
-		fmt.Println("ConfigMap Reload Checked, Need Update : ", needUpdate)
+		if showReloadCheckResult {
+			fmt.Println("ConfigMap Reload Checked, Need Update : ", needUpdate)
+		}
 
 		if needUpdate {
 			reload()

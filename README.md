@@ -1,13 +1,15 @@
-# Ingress NGINX Backend v1.1.1
+# Ingress NGINX Backend v1.2.0
 Kubernetes Ingress NGINX Backend
 
 ## Docker Hub
-`docker pull neojrotary/ingress-nginx-backend`
+[Docker Hub](https://hub.docker.com/r/neojrotary/ingress-nginx-backend)      
+`docker pull neojrotary/ingress-nginx-backend:latest`
 
 ## Intro
 - Support downloading confs from GCS
 - Support Nginx Hot Reload with Kubernetes ConfigMap volume mounting
-- Test with Kubernetes 1.9.6   
+- Latest image build base on `nginx:1.16.0`
+- Test with Kubernetes 1.13.6   
 - Check `CHANGES.md` for updates      
 
 ## How To Use
@@ -37,6 +39,9 @@ Check `k8s-example` folder for example configuration yaml
 ### K8S ConfigMap
 - CONFIGMAP_FOLDER : folder which mount with kubernetes configmap. Default is `/etc/config/`.
 - CONFIGMAP_SCAN_DUR : duration between scanning of configmap in second. Default is 60s.
+
+### OTHERS
+- SHOW_RELOAD_CHECK_RESULT : set `true` to enable printing ConfigMap reload checking's result 
 
 ## Setup Service Account
 You can set value directly at k8s configuration or pass by k8s secret.
